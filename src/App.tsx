@@ -14,9 +14,28 @@ const { StorageBrowser } = createStorageBrowser({
   config: createAmplifyAuthAdapter(),
 });
 
+const formFields = {
+  signIn: {
+    // Este objeto customiza el campo "Email"
+    username: {
+      label: 'Correo electrónico',               // cambia "Email"
+      placeholder: 'Ingresa tu correo electrónico', // cambia "Enter your Email"
+      isRequired: true,                           // vuelve a declarar si es obligatorio
+      labelHidden: false,                         // muestra la etiqueta
+    },
+    // Este objeto customiza el campo "Password"
+    password: {
+      label: 'Contraseña',                        // cambia "Password"
+      placeholder: 'Ingresa tu contraseña',        // cambia "Enter your Password"
+      isRequired: true,
+      labelHidden: false,
+    },
+  },
+};
+
 function App() {
   return (
-    <Authenticator>
+    <Authenticator formFields={formFields} hideSignUp>
       {({ signOut, user }) => (
         <>
           <Flex direction="row" alignItems="center" wrap="nowrap" gap="1rem">
